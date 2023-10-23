@@ -26,4 +26,4 @@ steps:
     azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
     appType: 'webApp'
     WebAppName: 'maz2'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/*'
