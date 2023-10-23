@@ -13,7 +13,12 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
+    appType: 'webApp'
+    WebAppName: 'maz2'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+
