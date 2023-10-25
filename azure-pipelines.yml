@@ -10,20 +10,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-- task: PublishBuildArtifacts@1
+    command: 'publish'
+    publishWebProjects: true
+- task: AzureWebApp@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
-    appType: 'webApp'
-    WebAppName: 'maz2'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/*'
+    appType: 'webAppLinux'
+    appName: 'maz2'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
