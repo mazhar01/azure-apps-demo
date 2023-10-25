@@ -8,15 +8,19 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-  
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
 
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@4
   inputs:
+    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
     appType: 'webApp'
-    appName: 'maz2'
-    package: '$(System.DefaultWorkingDirectory)/'
-    deploymentMethod: 'auto'
+    WebAppName: 'maz2'
+    packageForLinux: '$(System.DefaultWorkingDirectory)'
+
