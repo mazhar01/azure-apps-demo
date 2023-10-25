@@ -8,17 +8,15 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'publish'
-    publishWebProjects: true
+    command: 'build'
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
-    appType: 'webAppLinux'
+    appType: 'webApp'
     appName: 'maz2'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(System.DefaultWorkingDirectory)/'
+    deploymentMethod: 'auto'
