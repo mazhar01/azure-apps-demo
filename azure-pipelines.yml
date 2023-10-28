@@ -16,11 +16,18 @@ steps:
   inputs:
     command: 'build'
 
-- task: AzureRmWebAppDeployment@4
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
-    appType: 'webApp'
+    appType: 'webAppLinux'
     WebAppName: 'app-service-maz-v1'
     packageForLinux: '$(System.DefaultWorkingDirectory)'
+
+#- task: AzureRmWebAppDeployment@4
+#  inputs:
+#    ConnectionType: 'AzureRM'
+#    azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
+#    appType: 'webApp'
+#    WebAppName: 'app-service-maz-v1'
+#    packageForLinux: '$(System.DefaultWorkingDirectory)'
 
