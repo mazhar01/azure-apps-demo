@@ -21,7 +21,8 @@ steps:
     publishWebProjects: true
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '<Azure service connection>'
+    azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
     appType: 'webAppLinux'
-    appName: '<Name of web app>'
+    appName: 'app-service-maz-v1'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+  
