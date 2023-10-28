@@ -23,11 +23,4 @@ steps:
     appName: 'app-service-maz-v1'
     packageForLinux: '$(System.DefaultWorkingDirectory)'
 
-#- task: AzureRmWebAppDeployment@4
-#  inputs:
-#    ConnectionType: 'AzureRM'
-#    azureSubscription: 'Azure subscription 1(1)(46b07644-bed8-457f-a764-0e879e363070)'
-#    appType: 'webApp'
-#    WebAppName: 'app-service-maz-v1'
-#    packageForLinux: '$(System.DefaultWorkingDirectory)'
 
